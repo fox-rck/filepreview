@@ -74,7 +74,7 @@ module.exports = {
         }
 
         if (fileType == 'image') {
-          let convertArgs = [input + '[0]', output];
+          let convertArgs = [input, output];
           if (options.width > 0 && options.height > 0) {
             if(options.keepAspect) {
               convertArgs.splice(0, 0, '-resize', options.width + 'x' + options.height );
@@ -105,7 +105,7 @@ module.exports = {
 
           child_process.execFile('unoconv', ['-e', 'PageRange=1', '-o', tempPDF, input], function (error) {
             if (error) reject(error);
-            let convertOtherArgs = [tempPDF + '[0]', output];
+            let convertOtherArgs = [tempPDF, output];
             if (options.width > 0 && options.height > 0) {
               if(options.keepAspect) {
                 convertOtherArgs.splice(0, 0, '-resize', options.width + 'x' + options.height );
@@ -206,7 +206,7 @@ module.exports = {
 
     if (fileType == 'image') {
       try {
-        let convertArgs = [input + '[0]', output];
+        let convertArgs = [input, output];
         if (options.width > 0 && options.height > 0) {
           if(options.keepAspect) {
             convertArgs.splice(0, 0, '-resize', options.width + 'x' + options.height);
@@ -234,7 +234,7 @@ module.exports = {
 
         child_process.execFileSync('unoconv', ['-e', 'PageRange=1', '-o', tempPDF, input]);
 
-        let convertOtherArgs = [tempPDF + '[0]', output];
+        let convertOtherArgs = [tempPDF, output];
         if (options.width > 0 && options.height > 0) {
           if(options.keepAspect) {
             convertOtherArgs.splice(0, 0, '-resize', options.width + 'x' + options.height );
